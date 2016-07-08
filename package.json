@@ -1,0 +1,12 @@
+{
+  "name": "zuerikunst",
+  "version": "1.0.0",
+  "description": "An API for the public art in Zuerich",
+  "main": "index.js",
+  "author": "Martin Splitt <martin@geekonaut.de>",
+  "license": "ISC",
+  "dependencies": {
+    "pg-promise": "^5.1.0",
+    "restify": "^4.1.1"
+  }
+}
