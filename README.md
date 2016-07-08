@@ -4,10 +4,58 @@
 ## API Endpoints
 
 The API is deployed at [zuerikunst.herokuapp.com](http://zuerikunst.herokuapp.com).
+It is also available via HTTPS.
 
-### `GET /nearby/latitude/longitude`
+### `GET /`
 
-Returns the ten closest art objects for the given latitude and longitude.
+Returns the entire dataset
+
+Example:
+
+```shell
+curl http://zuerikunst.herokuapp.com/
+[{
+  "name": "\"Hintermünsterbrunnen\"",
+  "type": "Brunnen",
+  "artist": "Johann Jakob Breitinger (1814-1880), Joseph von  Wyl",
+  "date": "1861/1976",
+  "lat": 47.3702858347,
+  "lng": 8.54468923201
+},
+...
+]
+```
+
+### `GET /type/<type>`
+
+Returns the objects of the specified `<type>`.
+The available types are:
+
+* `Brunnen`
+* `Gestaltung`
+* `Installation`
+* `Bauplastik`
+* `Freiplastik`
+
+Example:
+
+```shell
+curl http://zuerikunst.herokuapp.com/type/Brunnen
+[{
+  "name": "\"Hintermünsterbrunnen\"",
+  "type": "Brunnen",
+  "artist": "Johann Jakob Breitinger (1814-1880), Joseph von  Wyl",
+  "date": "1861/1976",
+  "lat": 47.3702858347,
+  "lng": 8.54468923201
+},
+...
+]
+```
+
+### `GET /nearby/<latitude>/<longitude>`
+
+Returns the ten closest art objects for the given `<latitude>` and `<longitude>`.
 
 Example:
 
@@ -53,3 +101,9 @@ The API server can then be started by running `node index.js` and will launch on
 This project would not be possible without [Open Data Zürich](https://data.stadt-zuerich.ch/organization/stadt-zurich) and the Departementssekretariat, Tiefbau- und Entsorgungsdepartement as well as the Geomatik + Vermessung Zürich, Tiefbau- und Entsorgungsdepartement.
 
 More about ["Kunst im Stadtraum"](https://data.stadt-zuerich.ch/dataset/kunst-im-stadtraum) can be found on the website of the dataset.
+
+## License
+
+The original dataset is licensed under [CC0 (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/deed.en).
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT)

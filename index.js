@@ -14,7 +14,22 @@ server.get('/nearby/:lat/:lng', function(req, res, next) {
     earth_distance(ll_to_earth( ${parseFloat(req.params.lat)}, ${parseFloat(req.params.lng)} ), ll_to_earth(art_pieces.lat, art_pieces.lng)) as distance
     from art_pieces order by distance ASC LIMIT 10;
   `).then(function(result) {
-    console.log(result)
+    res.send(200, result)
+    return next()
+  })
+})
+
+server.get('/type/:type/', function(req, res, next) {
+  db.query(`select name, type, artist, date, lat, lng from art_pieces where type='${req.params.type}';`)
+  .then(function(result) {
+    res.send(200, result)
+    return next()
+  })
+})
+
+server.get('/', function(req, res, next) {
+  db.query(`select name, type, artist, date, lat, lng from art_pieces;`)
+  .then(function(result) {
     res.send(200, result)
     return next()
   })
